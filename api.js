@@ -29,7 +29,7 @@ const authorize = (req, res, next) => {
 
   const user = users.find(user => user.token === token);
   if (!user) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(401).json({ error: 'Нема такого юзера' });
   }
 
   req.user = user;
@@ -56,8 +56,6 @@ app.get('/api/userassessments', authorize, (req, res) => {
 // Authorized Route for User Assessment Report
 app.get('/api/userassessments/graph', authorize, (req, res) => {
   const assessmentId = req.query.id;
-  // Here you would fetch graph data based on assessmentId
-  // For simplicity, let's return mock data
   const graphData = { Agreeableness: 13.333333333333334, Drive: 21.666666666666668, Luck: 10, Openess: 30 };
   res.json({ data: graphData, type: 'bar' });
 });

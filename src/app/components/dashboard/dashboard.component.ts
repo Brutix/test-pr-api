@@ -9,15 +9,16 @@ import { ApiService } from '../../services/api.service';
 export class DashboardComponent implements OnInit {
 
   assessments: any[] = [];
-
+  graphData: any;
+  assessmentId: number = 1;
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.loadUserAssessments();
   }
 
-  loadUserAssessments(): void {
-    this.apiService.getUserAssessments().subscribe(
+  loadUserAssessments() {
+     this.apiService.getUserAssessments().subscribe(
       (data: any[]) => {
         this.assessments = data;
       },
@@ -27,4 +28,16 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  showGraph() {
+    // Отримати дані графіка з сервера
+    this.apiService.getGraphData(this.assessmentId).subscribe(
+      (data) => {
+        // Прийняти дані графіка та відобразити їх
+        this.graphData = data;
+      },
+      (error) => {
+        console.error('Помилка при отриманні даних графіка:', error);
+      }
+    );
+  }
 }
