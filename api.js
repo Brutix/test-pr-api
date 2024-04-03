@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 // Mock database or data storage
 let users = [
   { email: 'admin@deepersignals.com', password: 'password', firstName: 'Admin', lastName: 'Deepersignals', role: 'Admin', token: 'QWRtaW5Vc2Vy' },
-  { email: 'user@deepersignals.com', password: 'password', firstName: 'User', lastName: 'Deepersignals', role: 'User', token: 'VXNlclVzZXI=' }
+  { email: 'user@deepersignals.com', password: 'password', firstName: 'User', lastName: 'Deepersignals', role: 'User', token: 'QWRtaW5Vc2Vy' }
 ];
 let userAssessments = [
   { id: 1, name: 'Core Drivers', usersResolved: 5, active: true, imageUrl: 'https://d1cuxz3dnd9slg.cloudfront.net/assessments/Core+Values+-+Cover+Photo.jpg___2020-05-15-14-13-06.jpg' }
@@ -54,7 +54,7 @@ app.get('/api/userassessments', authorize, (req, res) => {
 });
 
 // Authorized Route for User Assessment Report
-app.get('/api/userassessments/graph', authorize, (req, res) => {
+app.get('/api/userassessments/graph', (req, res) => {
   const assessmentId = req.query.id;
   const graphData = { Agreeableness: 13.333333333333334, Drive: 21.666666666666668, Luck: 10, Openess: 30 };
   res.json({ data: graphData, type: 'bar' });
