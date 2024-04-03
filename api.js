@@ -1,7 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
+// CORS Configuration
+app.use(cors());
+
 const PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -18,7 +22,7 @@ let userAssessments = [
 
 // Middleware to check authorization
 const authorize = (req, res, next) => {
-  const token = req.headers['token'];
+  const token = req.headers['x-token'];
   if (!token) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -66,12 +70,7 @@ app.get('/api/admin/users', authorize, (req, res) => {
   res.json(users);
 });
 
-// CORS Configuration
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, X-Token');
-  next();
-});
+
 
 // Start server
 app.listen(PORT, () => {
