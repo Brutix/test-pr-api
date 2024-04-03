@@ -1,1 +1,9 @@
-<p>dashboard works!</p>
+<h2>User Assessment Reports</h2>
+
+<ul>
+  <li *ngFor="let assessment of assessments">
+    <!-- Відображення інформації про звіт оцінки -->
+    <p>{{ assessment.name }} - {{ assessment.usersResolved }} users resolved</p>
+    <img [src]="assessment.imageUrl" alt="{{ assessment.name }} Image">
+  </li>
+</ul>

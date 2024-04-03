@@ -18,7 +18,7 @@ let userAssessments = [
 
 // Middleware to check authorization
 const authorize = (req, res, next) => {
-  const token = req.headers['x-token'];
+  const token = req.headers['token'];
   if (!token) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -31,6 +31,8 @@ const authorize = (req, res, next) => {
   req.user = user;
   next();
 };
+
+
 
 // Unauthorized Route for Login
 app.post('/api/login', (req, res) => {
