@@ -57,7 +57,7 @@ app.get('/api/userassessments', authorize, (req, res) => {
 app.get('/api/userassessments/graph', (req, res) => {
   const assessmentId = req.query.id;
   const graphData = { Agreeableness: 13.333333333333334, Drive: 21.666666666666668, Luck: 10, Openess: 30 };
-  res.json({ data: graphData, type: 'bar' });
+  res.json({ data: graphData});
 });
 
 // Authorized Route for Admin Section (accessible by users with role 'Admin')

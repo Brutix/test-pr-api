@@ -4,25 +4,32 @@
 <ul>
   <li *ngFor="let assessment of assessments">
     <!-- Відображення інформації про звіт оцінки -->
-    <p>{{ assessment.id }} - {{ assessment.name }} - {{ assessment.usersResolved }} users resolved</p>
+    <p>{{ assessment.name }} - {{ assessment.usersResolved }} users resolved</p>
     <img [src]="assessment.imageUrl" alt="{{ assessment.name }} Image">
   </li>
 </ul>
 
 <div *ngIf="graphData" class="graph-container">
 
+<div>
+  <google-chart
+    [type]="charData.type"
+    [data]="graphDataArray"
+    [columns]="charData.chartColumns"
+    [options]="options"
+    [height]="600"
+    [width]="600"
+  >
 
 
-      <h3>Graph Data:</h3>
-      <p>Agreeableness: {{ graphData.data.Agreeableness }}</p>
-      <p>Drive: {{ graphData.data.Drive }}</p>
-      <p>Luck: {{ graphData.data.Luck }}</p>
-      <p>Openess: {{ graphData.data.Openess }}</p>
-
-
-
+  </google-chart>
 
 </div>
+
+
+  </div>
+
+
 
 
 
