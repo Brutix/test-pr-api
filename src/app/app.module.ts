@@ -30,6 +30,8 @@ import { ApiService } from './services/api.service';
     GoogleChartsModule
 
 
+
+
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

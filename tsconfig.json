@@ -28,5 +28,11 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "typeRoots": [
+    "node_modules/@types"
+  ],
+  "types": [
+    "node_modules/ng2-charts"
+  ]
 }
